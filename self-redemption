@@ -1,0 +1,61 @@
+Binary Search Related
+
+_378. Kth Smallest Element in a Sorted Matrix_
+(count all the elements that are <= median value, median value = left upper + right down)  
+
+ public class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        int lo = matrix[0][0], hi = matrix[matrix.length - 1][matrix[0].length - 1] + 1;
+        while(lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            int count = search_less_equal(matrix, mid);
+            if(count < k) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo; 
+    }
+    public int search_less_equal(int[][] matrix, int mid){
+            int j = matrix[0].length - 1, count = 0;
+            for(int i = 0; i < matrix.length; i++) {
+                while(j >= 0 && matrix[i][j] > mid) j--;
+                count += (j+1);
+            }
+        return count;
+    }
+}
+
+//method using priority queue
+   public class Solution {
+    public class Node{
+        int val, x, y;
+        public Node(int val, int x, int y){
+            this.val = val;
+            this.x = x;
+            this.y = y;
+        }
+    }
+    public int kthSmallest(int[][] matrix, int k) {
+        int n = matrix.length;
+        PriorityQueue<Node> pq = new PriorityQueue<Node>(
+            new Comparator<Node>(){
+               public int compare(Node a, Node b){
+                return a.val - b.val;
+               } 
+            }
+        );
+        for (int j = 0; j < n; j++){
+            pq.offer(new Node(matrix[0][j], 0, j));
+        }
+        for (int i = 0; i < k -1; i++){
+            Node node = pq.poll();
+            if(node.x < n - 1)
+                pq.offer(new Node(matrix[node.x+1][node.y], node.x+1, node.y));
+        }
+        return pq.poll().val;
+    }
+}
+
+_33 search in rotated sorted array_ 
+_153 Find min in rotated sorted array_
+_16 3 sum closest_
+_15 3 sum(need to remove duplicate ones)_
