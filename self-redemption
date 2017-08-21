@@ -65,3 +65,7 @@ _438 find anagram_
 _76 minimum sliding window_
     (one hash map, two int array, one int array) one hashmap and two int array have the same logic, two int array is much faster than hash map
 _140 word break II_
+
+Java PriorityQueue Related
+Java priority queue is implemented as min heap. C++ priority queue in default is max heap( std::greater<T> would cause the smallest element to appear as the top().
+_378 _ 
