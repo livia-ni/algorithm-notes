@@ -59,3 +59,9 @@ _33 search in rotated sorted array_
 _153 Find min in rotated sorted array_
 _16 3 sum closest_
 _15 3 sum(need to remove duplicate ones)_
+
+HashMap Related
+_438 find anagram_
+_76 minimum sliding window_
+    (one hash map, two int array, one int array) one hashmap and two int array have the same logic, two int array is much faster than hash map
+_140 word break II_
