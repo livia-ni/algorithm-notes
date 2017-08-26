@@ -68,4 +68,11 @@ _140 word break II_
 
 Java PriorityQueue Related
 Java priority queue is implemented as min heap. C++ priority queue in default is max heap( std::greater<T> would cause the smallest element to appear as the top().
-_378 _ 
+_378 Kth Smallest Element in a Sorted Matrix_ 
+
+
+TODO:
+This is a list of questions that have inplace algrithom but I haven't fully understand
+Array Inplace Algorithm: 
+_4 median of two sorted array_
+_324 wiggle sort_
