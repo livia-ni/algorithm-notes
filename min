@@ -1,0 +1,7 @@
+This can avoid integer exceed the largest number:
+   mid = lo + (hi - lo) / 2;
+ 
+Binary search:
+   Distinguish when to use < and <=
+   low < high
+   low <= high 
