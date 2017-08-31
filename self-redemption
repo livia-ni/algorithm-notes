@@ -75,4 +75,32 @@ TODO:
 This is a list of questions that have inplace algrithom but I haven't fully understand
 Array Inplace Algorithm: 
 _4 median of two sorted array_
+
+public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+         int l1 = nums1.length;
+         int l2 = nums2.length;
+
+         if(l2 > l1) return findMedianSortedArrays(nums2, nums1);
+          
+        //this is the index (if we merge the two array) where median number stands(when sum length is odd), when sum length is even, this is the first index of the middle two numbers
+         int median = (l1+l2-1)/2; 
+         int left = 0, right = l2; //right should be the length, if l2==1, right = l2-1 wont work to get the right answer
+         while(left < right){
+        	int mid = (left + right)/2; //cut point of l2, start point of sencond part of nums2
+        	
+            if(nums1[median-mid] > nums2[mid]){
+        		left = mid +1;
+        	}
+        	else right = mid;
+         }
+         //when left == right, this is the point where nums2 is cut,and left is the start point of second part of nums2
+        int a = Math.max((median-left >= 0)? nums1[median-left] : Integer.MIN_VALUE, (left-1 >= 0)? nums2[left-1] : Integer.MIN_VALUE);
+        if(((l1+l2) & 1) == 1){
+        	return (double) a;
+        }
+
+        int b = Math.min((median-left+1 < l1)? nums1[median-left+1] : Integer.MAX_VALUE, (left < l2)? nums2[left] : Integer.MAX_VALUE);
+        return (double) (a+b)/2;
+    }
+    
 _324 wiggle sort_
