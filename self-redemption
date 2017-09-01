@@ -55,8 +55,8 @@ _378. Kth Smallest Element in a Sorted Matrix_
     }
 }
 
-_33 81 search in rotated sorted array_ 
-_153 154 Find min in rotated sorted array_
+_33 81 search in rotated sorted array_  (a[mid] will be compared to a[low], then compare target with a[low] and a[mid])
+_153 154 Find min in rotated sorted array_ (a[mid] should be compared to a[high], since a[low] and a[mid] could be the same element)
 _16 3 sum closest_
 _15 3 sum(need to remove duplicate ones)_
 
