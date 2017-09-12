@@ -107,8 +107,11 @@ _76 minimum sliding window_
 _140 word break II_
 
 Java PriorityQueue Related
-Java priority queue is implemented as min heap. C++ priority queue in default is max heap( std::greater<T> would cause the smallest element to appear as the top().
 _378 Kth Smallest Element in a Sorted Matrix_ 
+_215 kth Largest Element in an Array_
+
+QuickSelect Related
+_215 kth Largest Element in an Array_
 
 
 TODO:
