@@ -110,8 +110,9 @@ Java PriorityQueue Related
 _378 Kth Smallest Element in a Sorted Matrix_ 
 _215 kth Largest Element in an Array_
 
-QuickSelect Related
-_215 kth Largest Element in an Array_
+QuickSelect Related : quickselect is used to find kth smallest element
+_215 kth Largest Element in an Array_ (k = nums.length - k)
+_378 Kth Smallest Element in a Sorted Matrix_ (explore to see whether quick select is applicable)
 
 
 TODO:
