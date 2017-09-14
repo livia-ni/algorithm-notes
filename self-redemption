@@ -16,7 +16,9 @@ _378. Kth Smallest Element in a Sorted Matrix_
             if(count < k) lo = mid + 1;
             else hi = mid;
         }
-        return lo; // why lo here can be guaranteed as a value in the matrix?
+        return lo; //Q: why lo here can be guaranteed as a value in the matrix? 
+        //A: lo/hi value will be narrowed down to a value that is in the matrix 
+        //and meet the requirement that number of elements <= value equal to k
     }
     public int search_less_equal(int[][] matrix, int mid){
             int j = matrix[0].length - 1, count = 0;
