@@ -3,7 +3,6 @@ This is very useful, to create a char array of size 128, usage: char[c] = ... to
 _409 Longest Palindrome_
 
 Binary Search Related
-
 _378. Kth Smallest Element in a Sorted Matrix_
 (count all the elements that are <= median value, median value = left upper + right down)  
 
@@ -123,9 +122,9 @@ _378 Kth Smallest Element in a Sorted Matrix_ (explore to see whether quick sele
 
 TODO:
 This is a list of questions that have inplace algrithom but I haven't fully understand
-Array Inplace Algorithm: 
-_4 median of two sorted array_
 
+_4 median of two sorted array_
+//Array Inplace Algorithm: 
 public double findMedianSortedArrays(int[] nums1, int[] nums2) {
          int l1 = nums1.length;
          int l2 = nums2.length;
