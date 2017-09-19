@@ -1,5 +1,9 @@
 Binary Tree traversal
 
+Quick Sort
+
+Merge Sort
+
 
 Use array to implement hashmap function
 This is very useful, to create a char array of size 128, usage: char[c] = ... to count or to set as boolean value
