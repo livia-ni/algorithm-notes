@@ -74,7 +74,35 @@ public String minWindow(String s, String t) {
         if(minLen > s.length()) return "";
         return s.substring(minStart, minStart+minLen);
     }
-    //one int array
+//one int array, decrease all value by 1, if not exist in string t, the value will be smaller than 0
+//this value will be used to decide whether change the "count"
+public String minWindow(String s, String t) {
+        if(s == null || s.length() == 0) return "";
+        int[] map = new int[256];
+        for(char c : t.toCharArray()){
+            map[c]++;
+        }
+        int left = 0, count = 0, minLen = s.length()+1, minStart = 0;
+        for(int right = 0; right < s.length(); right++){
+            if(map[s.charAt(right)] > 0){
+                 count++;
+            }
+            map[s.charAt(right)]--;
+                while(count == t.length()){
+                    if(right-left+1 < minLen){
+                        minLen = right-left+1;
+                        minStart = left;
+                    }
+                    if(map[s.charAt(left)] == 0){
+                        count--;
+                    }
+                    map[s.charAt(left)]++;
+                    left++;
+                }
+        }
+        if(minLen > s.length()) return "";
+        return s.substring(minStart, minStart+minLen);
+    }
 
 Binary Search Related
 _378. Kth Smallest Element in a Sorted Matrix_
