@@ -8,7 +8,7 @@ Merge Sort
 
 Two pointer
 Intersection of two arrays(one pointer for each array)
-valid palindrome(pointers - left, right, while left < right)
+valid palindrome(pointers - left, right, while left < right, to see whether left character == right character)
 
 
 
