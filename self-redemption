@@ -15,6 +15,66 @@ valid palindrome(pointers - left, right, while left < right, to see whether left
 Use array to implement hashmap function
 This is very useful, to create a char array of size 128, usage: char[c] = ... to count or to set as boolean value
 _409 Longest Palindrome_
+_76 minimum window substring_
+//one hashmap(logic is the same as two int array)
+public String minWindow(String s, String t) {
+        if(s == null || s.length() == 0) return "";
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(char c : t.toCharArray()){
+            if(map.containsKey(c)) map.put(c, map.get(c)+1);
+            else map.put(c, 1);
+        }
+        int left = 0, count = 0, minLen = s.length()+1, minStart = 0;
+        for(int right = 0; right < s.length(); right++){
+            if(map.containsKey(s.charAt(right))){
+                map.put(s.charAt(right), map.get(s.charAt(right))-1);
+                if(map.get(s.charAt(right)) >= 0) count++;
+                while(count == t.length()){
+                    if(right-left+1 < minLen){
+                        minLen = right-left+1;
+                        minStart = left;
+                    }
+                    if(map.containsKey(s.charAt(left))){
+                        map.put(s.charAt(left), map.get(s.charAt(left))+1);
+                        if(map.get(s.charAt(left)) > 0) count--;
+                    }
+                    left++;
+                }
+            }
+        }
+        if(minLen > s.length()) return "";
+        return s.substring(minStart, minStart+minLen);
+    }
+//two int array
+public String minWindow(String s, String t) {
+        if(s == null || s.length() == 0) return "";
+        int[] t_map = new int[256];
+        int[] s_map = new int[256];
+        for(char c : t.toCharArray()){
+            t_map[c]++;
+        }
+        int left = 0, count = 0, minLen = s.length()+1, minStart = 0;
+        for(int right = 0; right < s.length(); right++){
+            if(t_map[s.charAt(right)] != 0){
+                s_map[s.charAt(right)]++;
+                if(t_map[s.charAt(right)] >= s_map[s.charAt(right)]) count++;
+                while(count == t.length()){
+                    if(right-left+1 < minLen){
+                        minLen = right-left+1;
+                        minStart = left;
+                    }
+                    if(t_map[s.charAt(left)] != 0){
+                        s_map[s.charAt(left)]--;
+                        if(s_map[s.charAt(left)] < t_map[s.charAt(left)]) count--;
+                    }
+                    left++;
+                }
+            }
+        }
+        if(minLen > s.length()) return "";
+        return s.substring(minStart, minStart+minLen);
+    }
+    //one int array
 
 Binary Search Related
 _378. Kth Smallest Element in a Sorted Matrix_
