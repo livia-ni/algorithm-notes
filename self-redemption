@@ -106,6 +106,26 @@ public String minWindow(String s, String t) {
     
     
 _438 Find All Anagrams in a String_
+public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> res = new ArrayList<>();
+        int[] hash = new int[128];
+        for(char c : p.toCharArray()){
+            hash[c]++; 
+        }
+        int left = 0, count = 0;
+        for(int right = 0; right < s.length(); right++){
+            if(hash[s.charAt(right)] > 0) count++;
+            hash[s.charAt(right)]--;
+            if(count == p.length()) res.add(left);
+            if(right - left + 1 == p.length()){
+                if(hash[s.charAt(left)] >= 0) count--;
+                hash[s.charAt(left)]++;
+                left++;
+            }
+        }
+        return res;
+    }
+    //while loop
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> list = new ArrayList<>();
         if (s == null || s.length() == 0 || p == null || p.length() == 0) return list;
