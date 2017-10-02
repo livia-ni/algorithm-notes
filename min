@@ -10,3 +10,6 @@ Binary search:
 Java PriorityQueue is implemented as minheap(change the compare() method comparision order to achieve a maxheap)
 C++ PriorityQueue is default implemented as maxheap(std::greater<T> would cause the smallest element to appear as the top().)
 
+
+Java lambda expression (jdk 1.7 and higher)
+
