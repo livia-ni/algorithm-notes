@@ -13,3 +13,7 @@ C++ PriorityQueue is default implemented as maxheap(std::greater<T> would cause 
 
 Java lambda expression (jdk 1.7 and higher)
 
+LinkedList point:
+Remember to use dummyhead point to the real head, 
+sometimes the real head will need to be deleted according to the question requirement
+
