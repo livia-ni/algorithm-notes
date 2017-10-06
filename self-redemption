@@ -16,8 +16,9 @@ _19 remove nth node from end of list_ (keep n gap between slow and fast)
 
 dp related
 very simple example: 
-    485. max consecutive ones: use an array to store the number of consecutive ones at current index
+    485. max consecutive ones: use an array to store the number of consecutive ones at current index, base case res[0]=1/0;
                                update max value for each loop
+    139. word break: use a boolean array to store true or false at current index of string s
 
 Use array to implement hashmap function
 This is very useful, to create a char array of size 128, usage: char[c] = ... to count or to set as boolean value
