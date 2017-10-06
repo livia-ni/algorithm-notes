@@ -19,6 +19,24 @@ very simple example:
     485. max consecutive ones: use an array to store the number of consecutive ones at current index, base case res[0]=1/0;
                                update max value for each loop
     139. word break: use a boolean array to store true or false at current index of string s
+         public boolean wordBreak(String s, List<String> wordDict) {
+        boolean[] f = new boolean[s.length()+1];
+        f[0] = true;
+        for(int i = 1; i <= s.length(); i++){
+            for(String str : wordDict){
+                if(str.length() <= i){
+                    if(f[i - str.length()] && s.substring(i-str.length(), i).equals(str)){
+                        f[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+        for(boolean b : f){
+            System.out.println(b);
+        }
+        return f[s.length()];
+    }
 
 Use array to implement hashmap function
 This is very useful, to create a char array of size 128, usage: char[c] = ... to count or to set as boolean value
