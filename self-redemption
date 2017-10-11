@@ -1,3 +1,37 @@
+questions that have specific algorithm
+_31 next permutation_
+public void nextPermutation(int[] nums) {
+        int i = nums.length-1;
+        int pre;
+        //start from the end of array, find the first one which is larger than the previous one
+        while(i > 0 && nums[i] <= nums[i-1]){
+            i--;
+        }
+        //i == 0 means i reach the start of the array, just reverse the array
+        // i > 0 means we find the one that is larger than its previous one, its index is i, 
+        //we need to swap nums[i-1] with the first one that is larger than it starting from the end of array, which is nums[j]
+        if(i > 0){
+            int j = nums.length-1;
+            while(j > 0 && nums[j] <= nums[i-1]){
+                j--;
+            }
+            swap(i-1, j, nums);
+        }
+        reverse(i, nums.length-1, nums);
+    }
+    private void reverse(int lo, int hi, int[] nums){
+        while(lo < hi){
+            swap(lo, hi, nums);
+            lo++;
+            hi--;
+        }
+    }
+    private void swap(int lo, int hi, int[] nums){
+            int tmp = nums[lo];
+            nums[lo] = nums[hi];
+            nums[hi] = tmp;
+    }
+
 Binary Tree traversal
 DFS:recursion + (need more practice on how to implement DFS)
 
