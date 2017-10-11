@@ -74,6 +74,32 @@ very simple example:
         }
         return f[s.length()];
     }
+    //memo DFS
+    140. word break II
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        return helper(s, wordDict, new HashMap<String, List<String>>());
+    }
+
+    private List<String> helper(String s, List<String> wordDict, Map<String, List<String>> map) {
+        if (map.containsKey(s)) {
+            return map.get(s);
+        }
+        List<String> list = new ArrayList<>();
+        if (s.length() == 0) {
+            list.add("");
+            return list;
+        }
+        for (String word : wordDict) {
+            if (s.startsWith(word)) {
+                List<String> tmp = helper(s.substring(word.length()), wordDict, map);
+                for (String w : tmp) {
+                    list.add(word + (w.isEmpty() ? "" : " ") + w);
+                }
+            }
+        }
+        map.put(s, list);
+        return list;
+    }
 
 Use array to implement hashmap function
 This is very useful, to create a char array of size 128, usage: char[c] = ... to count or to set as boolean value
