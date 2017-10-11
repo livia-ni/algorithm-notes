@@ -37,8 +37,10 @@ DFS:recursion + (need more practice on how to implement DFS)
 
 BFS: use queue to implement a bfs
 
-Quick Sort/ quick select
+Quick select:
 k nearest points
+
+Quick sort
 
 Merge Sort
 
