@@ -74,8 +74,27 @@ very simple example:
         }
         return f[s.length()];
     }
-    //memo DFS
+    
     140. word break II
+    //DFS which will cause TLE
+    //it's important to know the reason that causes TLE, usually we use "memo" method to store each result from a branch
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        List<String> res = new ArrayList<>();
+        if(s.length() == 0){
+            res.add("");
+            return res;
+        }
+        for(String word : wordDict){
+            if(s.startsWith(word)){
+                List<String> sublist = wordBreak(s.substring(word.length()), wordDict);
+                for(String subword : sublist){
+                    res.add(word + (subword.isEmpty() ? "" : " ") + subword);
+                }
+            }
+        }
+        return res;
+    }
+    //memo DFS
     public List<String> wordBreak(String s, List<String> wordDict) {
         return helper(s, wordDict, new HashMap<String, List<String>>());
     }
