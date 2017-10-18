@@ -285,7 +285,33 @@ public List<Integer> findAnagrams(String s, String p) {
     }
     return list;
     }
-
+    
+_49 group anagrams_
+public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> res = new ArrayList<>();
+        Map<String, ArrayList<String>> map = new HashMap<>();
+        int[] count = new int[26];
+        for(String s : strs){
+            char[] ch = s.toCharArray();
+            Arrays.fill(count, 0);
+            for(char c : ch){
+                count[c - 'a']++;
+            }
+            StringBuilder sb = new StringBuilder("");
+            for(int i : count){
+                sb.append('#');
+                sb.append(i);
+            }
+            String key = sb.toString();
+            if(!map.containsKey(key)){
+                map.put(key, new ArrayList<>());
+            }
+            map.get(key).add(s);
+        }
+        return new ArrayList(map.values());
+    }
+    
+    
 Binary Search Related
 _378. Kth Smallest Element in a Sorted Matrix_
 (count all the elements that are <= median value, median value = left upper + right down)  
