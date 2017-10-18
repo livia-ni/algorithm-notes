@@ -17,3 +17,8 @@ LinkedList point:
 Remember to use dummyhead point to the real head, 
 sometimes the real head will need to be deleted according to the question requirement
 
+if the question contains "duplicate" sequence, remember to try to use HashSet to seek for a solution, but not brute force
+(add method will return false if the element already exists)
+
+
+
