@@ -223,6 +223,8 @@ public String minWindow(String s, String t) {
                  count++;
             }
             map[s.charAt(right)]--;
+            //while loop will start working when count == t.length(), that is all the letters has been found,
+            //then we start here to shrink the string
                 while(count == t.length()){
                     if(right-left+1 < minLen){
                         minLen = right-left+1;
