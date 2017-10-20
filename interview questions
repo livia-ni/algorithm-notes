@@ -4,3 +4,9 @@ Given a set of points in a cartesian plane, and a start point , find the k close
 Points = [(1,2),(2,3),(4,6),(7,9)]
 Start Point = (2,2)
 Find 2 closest points to start point.
+
+determines whether two rectangles overlap given their top-right and bottom-left coordinates:
+if(l2.x > r1.x || l1.x > r2.x) return false;
+if(l1.y > r2.y || l2.y > r1.y) return false;
+
+http://www.geeksforgeeks.org/find-two-rectangles-overlap/(the points are different)
