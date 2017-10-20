@@ -116,7 +116,9 @@ public int[] intersect(int[] nums1, int[] nums2) {
     }
 
 Binary Tree traversal
-DFS:recursion + (need more practice on how to implement DFS)
+DFS: inorder/preorder/postorder
+note: some questions just need to use recursion to complete a solution + (need more practice), 
+      apply not only on binary tree
 
 BFS: use queue to implement a bfs
 
