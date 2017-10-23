@@ -375,6 +375,27 @@ public List<Integer> findAnagrams(String s, String p) {
     return list;
     }
     
+    //two array map, brute force method: compare each possibility with string p
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> res = new LinkedList<>();
+        if(s == null || p == null || s.length() == 0 || p.length() == 0) return res;
+        int[] s_map = new int[256];
+        int[] p_map = new int[256];
+        for(int i = 0; i < p.length(); i++){
+            if(i < s.length()){
+               s_map[s.charAt(i)]++; 
+            }
+            p_map[p.charAt(i)]++;
+        }
+        if(Arrays.equals(s_map, p_map)) res.add(0);
+        for(int i = p.length(); i < s.length(); i++){
+            s_map[s.charAt(i)]++;
+            s_map[s.charAt(i - p.length())]--;
+            if(Arrays.equals(s_map, p_map)) res.add(i - p.length() + 1);
+        }
+        return res;
+    }
+    
 _49 group anagrams_
 public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> res = new ArrayList<>();
