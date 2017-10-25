@@ -10,3 +10,36 @@ if(l2.x > r1.x || l1.x > r2.x) return false;
 if(l1.y > r2.y || l2.y > r1.y) return false;
 
 http://www.geeksforgeeks.org/find-two-rectangles-overlap/(the points are different)
+
+
+
+Given an integer array, return another integer array as output in which each number is replaced by the product of rest of the numbers of the array.
+
+ Eg I/P - [2   1   3   4  5]
+
+ O/P -    [60 120  40  30 24]
+ public class Solution {
+    public int[] productExceptSelf(int[] nums) {
+
+        if (nums == null || nums.length == 0) return new int[0];
+        int len = nums.length;
+        int[] rst = new int[len];
+
+        rst[0] = 1;
+        for (int i = 1; i < len; i++) {
+            rst[i] = rst[i - 1] * nums[i - 1];
+        }
+
+        int right = 1;
+        for (int i = len - 1; i >= 0; i--) {
+            rst[i] *= right;
+            right *= nums[i];
+        }
+
+        return rst;
+    }
+}
+
+
+Design a big integer class, optimized for multiplication and addition.
+
