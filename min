@@ -8,6 +8,18 @@ Binary search:
    
   
 Java PriorityQueue is implemented as minheap(change the compare() method comparision order to achieve a maxheap)
+note: if we want to use PriorityQueue as maxheap, we can reverse the compare object
+
+PriorityQueue<Point> pq = new PriorityQueue<>(
+                new Comparator<Point>() {
+                    @Override
+                    public int compare(Point o1, Point o2) {
+                        //though java PriorityQueue is minheap, we can reverse the comparision order to implement a maxheap
+                        return distance(o2,orign) - distance(o1,orign);
+                    }
+                }
+        );
+
 C++ PriorityQueue is default implemented as maxheap(std::greater<T> would cause the smallest element to appear as the top().)
 
 
@@ -20,5 +32,8 @@ sometimes the real head will need to be deleted according to the question requir
 if the question contains "duplicate" sequence, remember to try to use HashSet to seek for a solution, but not brute force
 (add method will return false if the element already exists)
 
-
+to get the middle element of an array:
+n = array size
+if n is even, array[n/2] will get the latter one of two middle elements
+if n is odd, array[n/2] will get exactly the middle one
 
