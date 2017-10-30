@@ -45,3 +45,7 @@ Design a big integer class, optimized for multiplication and addition.
 
 Key value store with snapshot
 
+
+Other:
+consistent hashing
+
