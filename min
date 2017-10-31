@@ -37,3 +37,10 @@ n = array size
 if n is even, array[n/2] will get the latter one of two middle elements
 if n is odd, array[n/2] will get exactly the middle one
 
+Java Character.MIN_RADIX = 2 Chracter.MAX_RADIX = 36
+Chracter.digit(char ch, int radix)
+Returns the numeric value of the character {@code ch} in the specified radix.
+
+Chracter.isDigit(int codePoint)
+application: Chracter.isDigit('a') / Chracter.isDigit('12')
+
