@@ -42,6 +42,7 @@ Given an integer array, return another integer array as output in which each num
 
 OO Design:
 Design a big integer class, optimized for multiplication and addition.
+explain of java api: http://www.hollischuang.com/archives/176
 
 Key value store with snapshot
 
