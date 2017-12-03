@@ -45,3 +45,7 @@ Returns the numeric value of the character {@code ch} in the specified radix.
 Chracter.isDigit(int codePoint)
 application: Chracter.isDigit('a') / Chracter.isDigit('12')
 
+given a char[] ch = s.toCharArray();
+return new String(ch);  //will return "abdcs"
+return Arrays.toString(ch); //will return "[a,b,d,c,s]"
+
