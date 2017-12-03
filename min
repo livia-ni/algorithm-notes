@@ -49,3 +49,7 @@ given a char[] ch = s.toCharArray();
 return new String(ch);  //will return "abdcs"
 return Arrays.toString(ch); //will return "[a,b,d,c,s]"
 
+charsequence vs string
+https://docs.oracle.com/javase/8/docs/api/
+charsequence is an interface, in String contains(CharSequence c), can use a string as the parameter
+
