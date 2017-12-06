@@ -40,6 +40,31 @@ Given an integer array, return another integer array as output in which each num
     }
 }
 
+  //http://www.geeksforgeeks.org/find-maximum-depth-nested-parenthesis-string/
+    public static int depthParenthesis(String s){
+        if(s.length() == 0)
+            return 0;
+        int max = 0;
+        int max_depth = 0;
+        char[] chars = s.toCharArray();
+        for(char c : chars){
+            if(c == '('){
+                max++;
+                max_depth = Math.max(max, max_depth);
+            }
+            if(c == ')'){
+                if(max > 0)
+                    max--;
+                else
+                    return -1; //staring with ')'
+            }
+        }
+        //unbalanced, more '('
+        if(max > 0)
+            return -1;
+        return max_depth;
+    }
+
 OO Design:
 Design a big integer class, optimized for multiplication and addition.
 explain of java api: http://www.hollischuang.com/archives/176
