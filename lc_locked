@@ -30,8 +30,8 @@ static List<List<Integer>> VerticalOrder(Node root){
         for(int i = min; i <= max; i++){
             res.add(map.get(i));
         }
-        for(List<Integer> list : res){
-            System.out.println(list);
-        }
+        //for(List<Integer> list : res){
+          //  System.out.println(list);
+        //}
         return res;
     }
