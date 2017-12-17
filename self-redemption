@@ -425,6 +425,8 @@ public List<List<String>> groupAnagrams(String[] strs) {
 Binary Search Related
 _378. Kth Smallest Element in a Sorted Matrix_
 (count all the elements that are <= median value, median value = left upper + right down)  
+//compare this question to search in 2D matrix, also screen line by line, but search in 2D matrix is easier
+
 
  public class Solution {
     public int kthSmallest(int[][] matrix, int k) {
