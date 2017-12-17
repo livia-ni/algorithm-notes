@@ -6,6 +6,26 @@ Binary search:
    low < high
    low <= high 
    
+   in 74. Search a 2D Matrix, 
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length == 0) return false;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int left = 0, right = row*col-1;
+        while(left <= right){
+            int mid_idx = left + (right - left) / 2;
+            // note this line, remember and understand how to calculate the row and col
+            int mid_val = matrix[mid_idx/col][mid_idx%col];  
+            if(mid_val == target)
+                return true;
+            else if(mid_val < target)
+                left = mid_idx + 1;
+            else
+                right = mid_idx - 1;
+        }
+        return false;
+    }
+   
   
 Java PriorityQueue is implemented as minheap(change the compare() method comparision order to achieve a maxheap)
 note: if we want to use PriorityQueue as maxheap, we can reverse the compare object
