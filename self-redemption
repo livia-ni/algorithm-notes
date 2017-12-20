@@ -525,6 +525,30 @@ public int findMin(int[] nums) {
         return nums[lo];
     }
     
+    
+    
+_230. Kth Smallest Element in a BST_ 
+inorder traversal: pop till k == 0
+binary search: find the node number of root.left, rescursively compare k with left part node numbers
+
+ public int kthSmallest(TreeNode root, int k) {
+        int leftCount = countNode(root.left);
+        if(k <= leftCount){
+            return kthSmallest(root.left, k);
+        }
+        else if(k > leftCount + 1){
+            return kthSmallest(root.right, k - 1 - leftCount);
+        }
+        else 
+            return root.val;     
+    }
+    public int countNode(TreeNode node){
+        if(node == null) return 0;
+        return 1 + countNode(node.left) + countNode(node.right);
+    }
+    
+ ****follow up:What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
+              How would you optimize the kthSmallest routine?
 
 _16 3 sum closest_
 _15 3 sum(need to remove duplicate ones)_
