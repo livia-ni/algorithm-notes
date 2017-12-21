@@ -57,10 +57,31 @@ static List<List<Integer>> VerticalOrder(Node root){
  */
 public class Solution {
     // Recursive
+    class Solution {
+    int sum = 0;
+    public int depthSum(List<NestedInteger> nestedList) {
+        return helper(nestedList, 1);
+    }
+    
+    public int helper(List<NestedInteger> nestedList, int depth){
+        for(NestedInteger n: nestedList){
+            if(n.isInteger()){
+                //System.out.println(n.getInteger() + " " + depth);
+                sum += n.getInteger() * depth;
+            }
+            else{
+                helper(n.getList(), depth+1);
+            }
+        }
+        return sum;
+    }
+}
+    
+    
+    
     public int depthSum(List<NestedInteger> nestedList) {
         if(nestedList == null || nestedList.size() == 0)
             return 0;
-        
         return helper(nestedList, 1);
     }
     
