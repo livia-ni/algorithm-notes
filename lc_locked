@@ -38,7 +38,7 @@ static List<List<Integer>> VerticalOrder(Node root){
     
     
    339. Nested List Weight Sum
-   /**
+   /**depth increase
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation
  * public interface NestedInteger {
@@ -158,4 +158,23 @@ public class Solution {
     
     return sum;
 }
+}
+
+
+364. Nested List Weight Sum II
+/**depth decrease
+public int depthSumInverse(List<NestedInteger> nestedList) {
+    int unweighted = 0, weighted = 0;
+    while (!nestedList.isEmpty()) {
+        List<NestedInteger> nextLevel = new ArrayList<>();
+        for (NestedInteger ni : nestedList) {
+            if (ni.isInteger())
+                unweighted += ni.getInteger();
+            else
+                nextLevel.addAll(ni.getList());
+        }
+        weighted += unweighted;
+        nestedList = nextLevel;
+    }
+    return weighted;
 }
