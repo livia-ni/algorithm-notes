@@ -137,6 +137,21 @@ find the middle element of a linkedlist
 (Traverse linked list using two pointers. Move one pointer by one and other pointer by two. 
 When the fast pointer reaches end slow pointer will reach middle of the linked list.)
 
+_3 Longest Substring Without Repeating Characters_
+pointer i goes through the string s, pointer j will be the next position of the repeat character(j will only move forward,
+no move back if another repeated character has a smaller position before)
+public int lengthOfLongestSubstring(String s) {
+        if(s.length() == 0) return 0;
+        int max = 0;
+        int[] map = new int[256];
+        for (int i = 0, j = 0; i < s.length(); i++) {
+            j = (map[s.charAt(i)] > 0) ? Math.max(j, map[s.charAt(i)]) : j;
+            map[s.charAt(i)] = i+1;
+            max = Math.max(max, i - j + 1);
+        }
+        return max;
+    }
+
 dp related
 very simple example: 
     485. max consecutive ones: use an array to store the number of consecutive ones at current index, base case res[0]=1/0;
