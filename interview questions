@@ -4,6 +4,110 @@ Given a set of points in a cartesian plane, and a start point , find the k close
 Points = [(1,2),(2,3),(4,6),(7,9)]
 Start Point = (2,2)
 Find 2 closest points to start point.
+class Point {
+    public int x;
+    public int y;
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+class Distance implements Comparable<Distance> {
+    int d;
+    int i;
+
+    public Distance(int d, int i) {
+        this.d = d;
+        this.i = i;
+    }
+
+    @Override
+    public int compareTo(Distance o) {
+        return this.d - o.d;
+    }
+}
+Solution1: priorityqueue
+public static Point kNearest(Point[] points, Point orign, int k){
+        int n = points.length;
+        PriorityQueue<Point> pq = new PriorityQueue<>(
+                new Comparator<Point>() {
+                    @Override
+                    public int compare(Point o1, Point o2) {
+                        //though java PriorityQueue is minheap, we can reverse the comparision order to implement a maxheap
+                        return distance(o2,orign) - distance(o1,orign);
+                    }
+                }
+        );
+
+        for(int i = 0; i < n; i++){
+            pq.offer(points[i]);
+            if(pq.size() > k){
+                pq.poll();
+            }
+        }
+        return pq.poll();
+    }
+    
+ Solution2: quick select
+ //store distance in an array, quick select algorithm
+    public static Point kNearest2(Point[] points, Point orign, int k){
+        int n = points.length;
+        Distance[] dis = new Distance[n];
+        for(int i = 0; i < n; i++){
+            dis[i] = new Distance(distance(points[i], orign), i);
+        }
+        //Arrays.sort(dis);
+        quickSelect(dis, k);
+        for(Distance distance : dis){
+            System.out.println(distance.d + "," + distance.i);
+        }
+        return points[dis[k-1].i];
+    }
+
+    public static int distance(Point p1, Point p2){
+        return (p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y);
+    }
+
+
+    //k elements are not sorted but the [0] - [k-1] elements are smaller or equal than [k]
+    private static void quickSelect(Distance[] nums, int k) {
+        int start = 0, end = nums.length - 1;
+        while (start < end) {
+            int p = partition(nums, start, end);
+            if (p == k-1) {
+                return;
+            } else if (p < k-1) {
+                start = p + 1;
+            } else {
+                end = p - 1;
+            }
+        }
+    }
+    //start from the first element in the array, start from second one to find the first larger than first,
+    //start from end to find the first smaller than first
+    //swap the two elements, to achieve the goal: move smaller ones to the front
+    private static int partition(Distance[] nums, int start, int end) {
+        Distance pivot = nums[start];
+        int i = start, j = end + 1;
+        while (true) {
+            while (i < end && nums[++i].compareTo(pivot) < 0); //find the one that >= pivot
+            while (j > start && nums[--j].compareTo(pivot) > 0); //find the one that <= pivot
+            if (i >= j) {
+                break;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, start, j);
+        return j;
+    }
+
+
+    private static void swap(Distance[] nums, int i, int j) {
+        Distance tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+ 
 
 determines whether two rectangles overlap given their top-right and bottom-left coordinates:
 if(l2.x > r1.x || l1.x > r2.x) return false;
