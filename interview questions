@@ -169,6 +169,103 @@ Given an integer array, return another integer array as output in which each num
         return max_depth;
     }
 
+
+// 1   2   4
+//  \ /   / \
+//   3   5   8
+//    \ / \   \
+//     6   7   9
+
+// Write a function that takes this data as input and returns two collections: one containing all individuals with zero known parents, and one containing all individuals with exactly one known parent.
+
+// Sample output (pseudocode):
+// [
+//   [1, 2, 4],   // Individuals with zero parents
+//   [5, 7, 8, 9] // Individuals with exactly one parent
+// ]
+
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+  public static void main(String[] args) {
+    int[][] parentChildPairs = new int[][] {
+        {1, 3}, {2, 3}, {3, 6}, {5, 6}, {5, 7},
+        {4, 5}, {4, 8}, {8, 9}
+    };
+    int pairSize = parentChildPairs.length;
+    
+    // (parent, child)
+    //build a map of a node and its index
+    Map<Integer, Integer> nodeIndexMap = scanPairs(parentChildPairs);
+    //build a map of indexes to nodes
+    Map<Integer, Integer> indexNodeMap = reverseMap(nodeIndexMap);
+    //build a matrix to represent the edges
+    int[][] graph = new int[nodeIndexMap.size()+1][nodeIndexMap.size()+1];
+    //interate the pairs to insert value to the graph matrix
+    for(int i = 0; i< pairSize; i++){
+      graph[nodeIndexMap.get(parentChildPairs[i][0])][nodeIndexMap.get(parentChildPairs[i][1])] = 1;
+    }
+    //calculate the sum of each column
+    for(int j = 0; j < graph[0].length - 1; j++){
+      int sum = 0;
+      for(int i = 0; i < graph.length - 1; i++){
+        sum += graph[i][j];
+      }
+      graph[graph.length - 1][j] = sum;
+    }
+    //print the nodes with zero parent
+    System.out.println("nodes with zero parent:");
+    for(int i = graph.length - 1, j = 1; j < graph[0].length - 1; j++){
+      if(graph[i][j] == 0){
+        System.out.print(indexNodeMap.get(j) + " ");
+      }
+    }
+    System.out.println();
+    //print the nodes with one parent                                                               
+    System.out.println("nodes with one parent:");
+    for(int i = graph.length - 1, j = 1; j < graph[0].length - 1; j++){
+      if(graph[i][j] == 1){
+        System.out.print(indexNodeMap.get(j) + " ");
+      }
+    }                                                               
+                                                                  
+  }
+  
+  public static Map<Integer, Integer> scanPairs(int[][] pairs){
+    Map<Integer,Integer> nodeIndexMap = new HashMap<>();
+    nodeIndexMap.put(-1, 0);
+    nodeIndexMap.put(1,1);
+    nodeIndexMap.put(2,2);
+    nodeIndexMap.put(4,3);
+    int index = 4;
+    for(int i = 0; i < pairs.length; i++){
+      if(!nodeIndexMap.containsKey(pairs[i][1])){
+        nodeIndexMap.put(pairs[i][1], index);
+        index++;
+      }
+    }
+    return nodeIndexMap;
+  }
+                                                                   
+ public static Map<Integer, Integer> reverseMap(Map<Integer, Integer> map){
+   Map<Integer,Integer> indexNodeMap = new HashMap<>();
+   for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+     indexNodeMap.put(entry.getValue(), entry.getKey());
+   }
+   return indexNodeMap;
+ }                                                                  
+}
+
+
 OO Design:
 Design a big integer class, optimized for multiplication and addition.
 explain of java api: http://www.hollischuang.com/archives/176
