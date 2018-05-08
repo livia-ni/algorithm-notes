@@ -658,4 +658,15 @@ _324 wiggle sort_
             nums[i] = map.get(i);
         }
     }
+    
+    Questions that can be solved by using backtrack:
+    subset, 
+    
+    subset II, 
+    
+    permutation, 
+    
+    permutation II(contain duplicate number, return unique permutation)
+    
+    palidrome partitioning
 
