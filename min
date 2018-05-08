@@ -1,6 +1,11 @@
 This can avoid integer exceed the largest number:
    mid = lo + (hi - lo) / 2;
- 
+   
+calculate middle index of an array:
+    mid = (nums.length+1)/2 - 1
+mid will be the first index of the middle two if nums is even
+mid will be exact the middle index if nums is odd
+
 Binary search:
    Distinguish when to use < and <=
    low < high
