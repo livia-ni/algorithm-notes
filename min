@@ -1,3 +1,6 @@
+matrix clockwise: swap diagonal then reverse left to right
+       anticlockwise: reverse left to right then swap diagonal
+
 This can avoid integer exceed the largest number:
    mid = lo + (hi - lo) / 2;
    
