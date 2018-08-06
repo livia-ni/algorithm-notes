@@ -1,3 +1,41 @@
+253 Meeting Rooms II
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), 
+find the minimum number of conference rooms required.
+/**
+ * Definition for an interval.
+ * public class Interval {
+ *     int start;
+ *     int end;
+ *     Interval() { start = 0; end = 0; }
+ *     Interval(int s, int e) { start = s; end = e; }
+ * }
+ */
+class Solution {
+    public int minMeetingRooms(Interval[] intervals) {
+        if (intervals == null || intervals.length == 0)
+            return 0;
+        Arrays.sort(intervals, new Comparator<Interval>() {
+            public int compare(Interval a, Interval b) { return a.start - b.start; }
+        });
+        PriorityQueue<Interval> q = new PriorityQueue<Interval>(intervals.length, new Comparator<Interval>(){
+            public int compare(Interval a, Interval b) { return a.end - b.end; }
+        });
+        q.offer(intervals[0]);
+        for(int i = 1; i < intervals.length; i++){
+            Interval interval = q.poll();
+            if(intervals[i].start >= interval.end){
+                interval.end = intervals[i].end;
+            }
+            else{
+                q.offer(intervals[i]);
+            }
+            q.offer(interval);
+        }
+        return q.size();
+    }
+}
+
+
 314 Print a Binary Tree in Vertical Order
 //level order traversal
 static List<List<Integer>> VerticalOrder(Node root){
