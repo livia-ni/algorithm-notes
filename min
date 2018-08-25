@@ -1,3 +1,9 @@
+string split java:
+Using the OR operator:
+String delimiters = "\\t|,|;|\\.|\\?|!|-|:|@|\\[|\\]|\\(|\\)|\\{|\\}|_|\\*|/";
+Using the character class:
+String delimiters = "[-\\t,;.?!:@\\[\\](){}_*/]";
+
 XOR swap: tricky point, if used by two identical numbers, the result will be 0 anyway, use temp may be better in all cases
 
 matrix clockwise: swap diagonal then reverse left to right
