@@ -1,3 +1,7 @@
+bit operation for signed and unsigned integer:
+signed: <<, >>, 
+unsigned: <<<, >>>, 
+
 hashtable vs hashmap:
 1. HashMap is non synchronized. It is not-thread safe and can’t be shared between many threads without proper synchronization 
 code whereas Hashtable is synchronized. It is thread-safe and can be shared with many threads.
