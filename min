@@ -1,3 +1,7 @@
+Comparator: public int compare()
+
+Comparable: public int compareTo()
+
 bit operation for signed and unsigned integer:
 signed: <<, >>, 
 unsigned: <<<, >>>, 
