@@ -1,3 +1,6 @@
+
+StringBuilder: indexOf() is much slower than lastIndexOf()
+
 Comparator: public int compare()
 
 Comparable: public int compareTo()
