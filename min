@@ -36,9 +36,9 @@ This can avoid integer exceed the largest number:
    mid = lo + (hi - lo) / 2;
    
 calculate middle index of an array:
-    mid = (nums.length+1)/2 - 1
-mid will be the first index of the middle two if nums is even
-mid will be exact the middle index if nums is odd
+    mid = (nums.length-1)/2
+mid will be the first index of the middle two if nums is even . len = 8, (8-1)/2=3
+mid will be exact the middle index if nums is odd . len = 9, (9-1)/2 = 4
 
 Binary search:
    Distinguish when to use < and <=
